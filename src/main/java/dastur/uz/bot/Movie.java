@@ -25,10 +25,10 @@ public class Movie {
     @Column(nullable = true)
     String code;
 
-    @ElementCollection
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
     @Column(name = "genre")
+    @ElementCollection(fetch = FetchType.EAGER)
     private Set<Genre> genres = new HashSet<>();
 
 
